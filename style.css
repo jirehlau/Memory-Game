@@ -1,8 +1,53 @@
-*{
+* {
+    background-color: grey;
+    font-family: Helvetica ;   
+}
+h1{
     text-align: center;
 }
-.container{
-    justify-content: space-around;
+
+/* NAV BAR STYLINGS */
+ul {
+    color: black;
+    list-style-type: none;
+    margin: 0; 
+    padding: 0; 
+    text-align: center; 
+    word-spacing: 150px;
+}
+
+li {
+    display: inline;
+}
+
+.resetButton {
+    cursor: pointer;
+}
+.resetButton:hover {
+    color: pink;
+}
+
+/* GAME GRID STYLING */
+
+.game-grid {
+    background-color: grey;
+    padding: 0.01cm 12.5cm;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 15px;
+    margin-top: 50px;
+    height: 700px;
+    width: 1000px;
+    grid-template-areas: 
+    "a a b b"
+    "c c d d"
+    "e e f f";
+    
+}
+
+.cell1,.cell2, .cell3, .cell4, .cell5, .cell6, .cell7, .cell8, .cell9, .cell10, .cell11, .cell12 {
+    background-color: antiquewhite;
 }
 
 
