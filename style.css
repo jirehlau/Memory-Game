@@ -1,9 +1,10 @@
 * {
-    background-color: grey;
+    background-color: #E5E5E5;
     font-family: Helvetica ;   
 }
 h1{
     text-align: center;
+    font-size: 50px;
 }
 
 /* NAV BAR STYLINGS */
@@ -18,6 +19,7 @@ ul {
 
 li {
     display: inline;
+    font-size: 20px;
 }
 
 .resetButton {
@@ -30,7 +32,7 @@ li {
 /* GAME GRID STYLING */
 
 .game-grid {
-    background-color: grey;
+    background-color: #E5E5E5;
     padding: 0.01cm 12.5cm;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -47,7 +49,7 @@ li {
 }
 
 .cell1,.cell2, .cell3, .cell4, .cell5, .cell6, .cell7, .cell8, .cell9, .cell10, .cell11, .cell12 {
-    background-color: antiquewhite;
+    background-color: #C4C4C4;
 }
 
 
