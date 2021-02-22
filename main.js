@@ -1,100 +1,213 @@
 //1. CONSTANT
-card1 = "a";
-card2 = "a";
-card3 = "b";
-card4 = "b";
-card5 = "c";
-card6 = "c";
-card7 = "d";
-card8 = "d";
-card9 = "e";
-card10 = "e";
-card11 = "f";
-card12 = "f";
+	//Cell Boxes
+	const card1 = "a";
+	const card2 = "a";
+	const card3 = "b";
+	const card4 = "b";
+	const card5 = "c";
+	const card6 = "c";
+	const card7 = "d";
+	const card8 = "d";
+	const card9 = "e";
+	const card10 = "e";
+	const card11 = "f";
+	const card12 = "f";
 
 //2. VARIABLES
+	//Cell Boxes
+		// let userSelection = "";
+		// let userSelection1 = card1;
+		// let userSelection2 = card2;
+		// let userSelection3 = card3;
+		// let userSelection4 = card4;
+		// let userSelection5 = card5;
+		// let userSelection6 = card6;
+		// let userSelection7 = card7;
+		// let userSelection8 = card8;
+		// let userSelection9 = card9;
+		// let userSelection10 = card10;
+		// let userSelection11 = card11;
+		// let userSelection12 = card12;
+
+	//Flipping Variables
+		let prevCard = "";
+		let prevCell = null;
+	 
+
+	//Card Matches
+		// let cardsFlipped = 0;
+	
+
+
+
+
+// let time = 60;
+// let clicks = 0;
 // Let score = 0;
 // let numOfCards = 12;
-// let time = 1:00;
-// let userSelection = "";
-let userSelection1 = card1;
-let userSelection2 = card2;
-let userSelection3 = card3;
-let userSelection4 = card4;
-let userSelection5 = card5;
-let userSelection6 = card6;
-let userSelection7 = card7;
-let userSelection8 = card8;
-let userSelection9 = card9;
-let userSelection10 = card10;
-let userSelection11 = card11;
-let userSelection12 = card12;
+
+//3. ELEMENT REFERENCES	
+	//Cell Boxes
+	let c1 = document.getElementById("cell1");
+	let c2 = document.getElementById("cell2");
+	let c3 = document.getElementById("cell3");
+	let c4 = document.getElementById("cell4");
+	let c5 = document.getElementById("cell5");
+	let c6 = document.getElementById("cell6");
+	let c7 = document.getElementById("cell7");
+	let c8 = document.getElementById("cell8");
+	let c9 = document.getElementById("cell9");
+	let c10 = document.getElementById("cell10");
+	let c11 = document.getElementById("cell11");
+	let c12 = document.getElementById("cell12");
 
 
-//3. ELEMENT REFERENCES
-// let timer = document.getElementById("countDown");
+
+	//Filliping Element References
+
+
+
+
+// let timeLeft = document.getElementById("countDown");
+
 // let score = document.getElementById("scoreKeeper");
 // let reset = document.getElementById("resetButton");
 
-let c1 = document.getElementById("cell1");
-let c2 = document.getElementById("cell2");
-let c3 = document.getElementById("cell3");
-let c4 = document.getElementById("cell4");
-let c5 = document.getElementById("cell5");
-let c6 = document.getElementById("cell6");
-let c7 = document.getElementById("cell7");
-let c8 = document.getElementById("cell8");
-let c9 = document.getElementById("cell9");
-let c10 = document.getElementById("cell10");
-let c11 = document.getElementById("cell11");
-let c12 = document.getElementById("cell12");
-
-
 
 //4. EVENT LISTENERS
-c1.addEventListener("click", selectOneWasClicked);
-c2.addEventListener("click", selectTwoWasClicked);
-c3.addEventListener("click", selectThreeWasClicked);
-c4.addEventListener("click", selectFourWasClicked);
-c5.addEventListener("click", selectFiveWasClicked);
-c6.addEventListener("click", selectSixWasClicked);
-c7.addEventListener("click", selectSevenWasClicked);
-c8.addEventListener("click", selectEightWasClicked);
-c9.addEventListener("click", selectNineWasClicked);
-c10.addEventListener("click", selectTenWasClicked);
-c11.addEventListener("click", selectElevenWasClicked);
-c12.addEventListener("click", selectTwelveWasClicked);
+	//Cell Boxes
+	c1.addEventListener("click", selectOneWasClicked);
+	c2.addEventListener("click", selectTwoWasClicked);
+	c3.addEventListener("click", selectThreeWasClicked);
+	// c4.addEventListener("click", selectFourWasClicked);
+	// c5.addEventListener("click", selectFiveWasClicked);
+	// c6.addEventListener("click", selectSixWasClicked);
+	// c7.addEventListener("click", selectSevenWasClicked);
+	// c8.addEventListener("click", selectEightWasClicked);
+	// c9.addEventListener("click", selectNineWasClicked);
+	// c10.addEventListener("click", selectTenWasClicked);
+	// c11.addEventListener("click", selectElevenWasClicked);
+	// c12.addEventListener("click", selectTwelveWasClicked);
 
+
+	//Flipping Event Listeners
+	
+
+
+
+// timeLeft.addEventListener("click", whenFirstCardIsClicked)
 
 
 //5. FUNCTIONS
 function selectOneWasClicked() {
-	c1.innerHTML = (img src="");
+    c1.innerHTML = "A";
+    if(prevCard ==="A" || prevCard === "") {
+    }
+    else {
+        setTimeout(function() {
+			c1.innerHTML = "X";
+			prevCell.innerHTML = "X";
+		}, 1000) //This timer is for the card function to flip back it doesn't match
+    }
+    	setTimeout(function() {
+			prevCard = "A"; //We are setting the previous card to A
+			prevCell = c1; //We are setting the previous Cell to c1, which is where this sell is, which contant the letter "A" 
+		}, 1100)//This timer is setting the previous card letter 
 }
+
+
 
 function selectTwoWasClicked() {
-	c2.innerHTML = "A Card";
+    c2.innerHTML = "A";
+    if(prevCard ==="A" || prevCard === "") {
+    }
+    else {
+        setTimeout(function() {
+			c2.innerHTML = "X";
+			prevCell.innerHTML = "X";
+		}, 1000)
+    }
+    setTimeout(function(){
+		prevCard = "A";
+    	prevCell = c2;
+	}, 1100)
 }
+
+
+
+
 
 function selectThreeWasClicked() {
-	c3.innerHTML ="B card"
+    c3.innerHTML = "B";
+    if(prevCard ==="B" || prevCard === "") {
+    }
+    else {
+        setTimeout(function() {
+			c3.innerHTML = "X";
+			prevCell.innerHTML = "X";
+		}, 1000) 
+	}   
+		setTimeout(function() {
+			prevCard = "B";
+			prevCell = c3;
+		}, 1100)
 }
 
-function selectFourWasClicked() {
-	c4.innerHTML = "B card"
-}
 
-function selectFiveWasClicked(){
-	c5.innerHTML = "C card"
-}
 
-function selectSixWasClicked() {
-	c6.innerHTML = "C Card"
-}
+// function selectFourWasClicked() {
+// 	c4.innerHTML = "B";
+// 	if (prevCard === "B" || prevCard === "") {
+// 	} 
+// 	else {
+// 		setTimeout(function () {
+// 			c4.innerHTML = "X";}, 1000);
+// 		prevCell.innerHTML = "X";
+// 	}
+// }
 
-function selectSevenWasClicked() {
-	c7.innerHTML = "D Card"
-}
+
+
+// function selectFiveWasClicked(){
+// 	c5.innerHTML = "C"
+// }
+
+// function selectSixWasClicked() {
+// 	c6.innerHTML = "C"
+// }
+
+// function selectSevenWasClicked() {
+// 	c7.innerHTML = "D"
+// }
+
+// function selectEightWasClicked() {
+// 	c8.innerHTML = "D"
+// }
+
+// function selectNineWasClicked() {
+// 	c9.innerHTML = "E"
+// }
+
+// function selectTenWasClicked() {
+// 	c10.innerHTML = "E"
+// } 
+
+// function selectElevenWasClicked() {
+// 	c11.innerHTML = "F"
+// }
+
+// function selectTwelveWasClicked() {
+// 	c12.innerHTML = "F"
+// }
+
+
+
+
+
+
+
+
+
 
 
 // we are going to add an event listener click, so each time you click a card, it will flip over

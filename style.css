@@ -32,7 +32,7 @@ li {
 /* GAME GRID STYLING */
 
 .game-grid {
-    background-color: #E5E5E5;
+    background-color: #e5e5e5 ;
     padding: 0.01cm 12.5cm;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -51,5 +51,4 @@ li {
 .cell {
     background-color: #C4C4C4;
 }
-
 
