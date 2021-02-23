@@ -78,251 +78,302 @@
 	//Cell Boxes
 	c1.addEventListener("click", selectOneWasClicked);
 	c2.addEventListener("click", selectTwoWasClicked);
-	c3.addEventListener("click", selectThreeWasClicked);
-	c4.addEventListener("click", selectFourWasClicked);
-	c5.addEventListener("click", selectFiveWasClicked);
-	c6.addEventListener("click", selectSixWasClicked);
-	c7.addEventListener("click", selectSevenWasClicked);
-	c8.addEventListener("click", selectEightWasClicked);
-	c9.addEventListener("click", selectNineWasClicked);
-	c10.addEventListener("click", selectTenWasClicked);
-	c11.addEventListener("click", selectElevenWasClicked);
-	c12.addEventListener("click", selectTwelveWasClicked);
+	// c3.addEventListener("click", selectThreeWasClicked);
+	// c4.addEventListener("click", selectFourWasClicked);
+	// c5.addEventListener("click", selectFiveWasClicked);
+	// c6.addEventListener("click", selectSixWasClicked);
+	// c7.addEventListener("click", selectSevenWasClicked);
+	// c8.addEventListener("click", selectEightWasClicked);
+	// c9.addEventListener("click", selectNineWasClicked);
+	// c10.addEventListener("click", selectTenWasClicked);
+	// c11.addEventListener("click", selectElevenWasClicked);
+	// c12.addEventListener("click", selectTwelveWasClicked);
 
-
-	//Flipping Event Listeners
-	
-
-
-
-// timeLeft.addEventListener("click", whenFirstCardIsClicked)
 
 
 //5. FUNCTIONS
 
 	//CELL 1 FUNCTION
 function selectOneWasClicked() {
-    c1.innerHTML = "A"; //selecting the innerHTML for Cell 1 and changing it to "A"
-    if (prevCard ==="A" || prevCard === "") { //This line is telling us if previous card equals to "1" OR if previous card is blank, nothing happens
-    }
-    else {
-        setTimeout(function() {
-			c1.innerHTML = "X"; //or else, if c1's innerHTML does not match, it will flip back to an X
-			prevCell.innerHTML = "X"; //it will also set previous cell to "x" which is the back of the card, if it is not a match
-		}, 1000) //This timer is for the card function to flip back it doesn't match
-    }
-    	setTimeout(function() {
-			prevCard = "A"; //We are setting the previous card to A
-			prevCell = c1; //We are setting the previous Cell to c1, which is where this sell is, which contant the letter "A" 
-		}, 1100)//This timer is setting the previous card letter 
-}
-
+		c1.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>"; //selecting the innerHTML for Cell 1 and changing it to "A"
+		if (prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") { //This line is telling us if previous card equals to "1" OR if previous card is blank, nothing happens
+			prevCard = ""; // this resets our state values to empty so we can start again
+			prevCell = null;
+			return;
+		}
+		if (prevCard === "") { // this is the first card
+			prevCard = "<img src='HTML Logo.png' width='235px' height='220px'>";
+			prevCell = c1;
+		}
+		else {
+			setTimeout(function() {
+				c1.innerHTML = "X"; //or else, if c1's innerHTML does not match, it will flip back to an X
+				prevCell.innerHTML = "X"; //it will also set previous cell to "x" which is the back of the card, if it is not a match
+				prevCard = ""; // this resets our state values to empty so we can start again
+				prevCell = null;
+			}, 700) //This timer is for the card function to flip back it doesn't match
+		}
+	}
 
 	//CELL 2 FUNCTION
 
 function selectTwoWasClicked() {
-    c2.innerHTML = "A";
-    if(prevCard ==="A" || prevCard === "") {
-    }
+    c2.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>";
+	if(prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+		}
+	if (prevCard === ""){
+		prevCard = "<img src='HTML Logo.png' width='235px' height='220px'>";
+		prevCell = c2;	
+	}
     else {
         setTimeout(function() {
 			c2.innerHTML = "X";
 			prevCell.innerHTML = "X";
-		}, 1000)
+			prevCard = "";
+			prevCell = null;
+		}, 700)
     }
-    setTimeout(function(){
-		prevCard = "A";
-    	prevCell = c2;
-	}, 1100)
 }
 
 
 
-	//CELL 3 FUNCTION
+// 	//CELL 3 FUNCTION
 
-function selectThreeWasClicked() {
-    c3.innerHTML = "B";
-    if(prevCard ==="B" || prevCard === "") {
-    }
-    else {
-        setTimeout(function() {
-			c3.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000) 
-	}   
-		setTimeout(function() {
-			prevCard = "B";
-			prevCell = c3;
-		}, 1100)
-}
+// function selectThreeWasClicked() {
+// 	c3.innerHTML = "B";
+// 	if (prevCard === "B") {
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if (prevCard === "") {
+// 		prevCard = "B";
+// 		prevCell = c3;
+// 	}
+// 	else {
+// 		setTimeout(function() {
+// 			c3.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
-	//CELL 4 FUNCTION
-
-
-function selectFourWasClicked() {
-	c4.innerHTML = "B";
-	if (prevCard === "B" || prevCard === "") {
-	} 
-	else {
-		setTimeout(function () {
-			c4.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000);
-	}
-	setTimeout(function() {
-		prevCard ="B";
-		prevCell = c4;
-	}, 1100)
-}
-
-	//CELL 5 FUNCTION
+// 	//CELL 4 FUNCTION
 
 
-function selectFiveWasClicked(){
-	c5.innerHTML = "C"
-	if (prevCard === "C" || prevCard == "") {
-	}
-	else {
-		setTimeout(function () {
-			c5.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000);
-	}
-	setTimeout(function(){
-		prevCard = "C";
-		prevCell = c5;
-	}, 1100)
-}
+// function selectFourWasClicked() {
+// 	c4.innerHTML = "B";
+// 	if(prevCell === "B") {
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if (prevCard === ""){
+// 		prevCard = "B";
+// 		prevCell = c4; 
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c4.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCell = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
-	//CELL 6 FUNCTION
+// 	//CELL 5 FUNCTION
 
-function selectSixWasClicked() {
-	c6.innerHTML = "C"
-	if (prevCard === "C" || prevCard === ""){
-	}
-	else {
-		setTimeout(function(){
-			c6.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "C";
-		prevCell = c6;
-	}, 1100)
-}
+// function selectFiveWasClicked(){
+// 	c5.innerHTML = "C"
+// 	if(prevCard === "C") {
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if (prevCard === ""){
+// 		prevCard = "C";
+// 		prevCell = c5;
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c5.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
-	//CELL 7 FUNCTION
+// 	//CELL 6 FUNCTION
 
-function selectSevenWasClicked() {
-	c7.innerHTML = "D"
-	if (prevCard === "D" || prevCard === ""){
-	}
-	else {
-		setTimeout(function(){
-		c7.innerHTML = "X";
-		prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "D";
-		prevCell = c7
-	}, 1100)
-}
+// function selectSixWasClicked() {
+// 	c6.innerHTML = "C";
+// 	if(prevCard === "C"){
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if (prevCard === ""){
+// 		prevCard = "C";
+// 		prevCell = c6;
+// 	}
+// 	else {
+// 		setTimeout(function() {
+// 			c6.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
-	//CELL 8 FUNCTION
+// 	//CELL 7 FUNCTION
 
-function selectEightWasClicked() {
-	c8.innerHTML = "D"
-	if (prevCard === "D" || prevCard ===""){
-	}
-	else {
-		setTimeout(function(){
-			c8.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "D";
-		prevCell = c8;
-	}, 1100)
-}
+// function selectSevenWasClicked() {
+// 	c7.innerHTML = "D";
+// 	if(prevCard === "D") {
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if(prevCard === "") {
+// 		prevCard = "D";
+// 		prevCell = c7;
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c7.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
+// 	//CELL 8 FUNCTION
 
-	//CELL 9 FUNCTION
-
-function selectNineWasClicked() {
-	c9.innerHTML = "E"
-	if (prevCard === "E" || prevCard ==""){
-	}
-	else {
-		setTimeout(function(){
-			c9.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "E";
-		prevCell = c9
-	}, 1100)
-}
-
-
-	//CELL 10 FUNCTION
-
-function selectTenWasClicked() {
-	c10.innerHTML = "E"
-	if (prevCard === "E" || prevCard === ""){
-	}
-	else {
-		setTimeout(function(){
-			c10.innerHTML = "X" ;
-			prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "E";
-		prevCell = c10;
-	}, 1100)
-} 
-
-
-	//CELL 11 FUNCTION
-
-function selectElevenWasClicked() {
-	c11.innerHTML = "F"
-	if (prevCard === "F" || prevCard === ""){
-	}
-	else {
-		setTimeout(function(){
-			c11.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "F";
-		prevCell = c11;
-	}, 1100)
-}
+// function selectEightWasClicked() {
+// 	c8.innerHTML = "D";
+// 	if(prevCard === "D") {
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if(prevCard === ""){
+// 		prevCard = "D";
+// 		prevCell = c8;
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c8.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
 
-	//CELL 12 FUNCTION
+// 	//CELL 9 FUNCTION
 
-function selectTwelveWasClicked() {
-	c12.innerHTML = "F"
-	if (prevCard === "F" || prevCard ===""){
-	}
-	else {
-		setTimeout(function(){
-			c12.innerHTML = "X";
-			prevCell.innerHTML = "X";
-		}, 1000)
-	}
-	setTimeout(function(){
-		prevCard = "F";
-		prevCell = c12;
-	})
-}
+// function selectNineWasClicked() {
+// 	c9.innerHTML = "E";
+// 	if(prevCard === "E"){
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if (prevCard === "") {
+// 		prevCard = "E";
+// 		prevCell = c9;
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c9.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
+
+
+// 	//CELL 10 FUNCTION
+
+// function selectTenWasClicked() {
+// 	c10.innerHTML = "E";
+// 	if(prevCard === "E"){
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;
+// 	}
+// 	if(prevCard === ""){
+// 		prevCard = "E";
+// 		prevCell = c10;
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c10.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCard = null;
+// 		}, 700)
+// 	}
+// } 
+
+
+// 	//CELL 11 FUNCTION
+
+// function selectElevenWasClicked() {
+// 	c11.innerHTML = "F";
+// 	if(prevCard === "F"){
+// 		prevCard = "";
+// 		prevCell = null;
+// 		return;	
+// 	}
+// 	if(prevCard = ""){
+// 		prevCard = "F";
+// 		prevCell = c11;
+// 	}
+// 	else {
+// 		setTimeout(function(){
+// 			c11.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCard = null;
+// 		}, 700)
+// 	}
+// }
+
+
+// 	//CELL 12 FUNCTION
+
+// function selectTwelveWasClicked() {
+// 	c12.innerHTML = "F";
+// 	if(prevCard === "F"){
+// 		prevCard = "";
+// 		prevCell = nulll
+// 		return;
+// 	}
+// 	if(prevCard === "") {
+// 		prevCard = "F";
+// 		prevCell = c12; 
+// 	}
+// 	else{
+// 		setTimeout(function(){
+// 			c12.innerHTML = "X";
+// 			prevCell.innerHTML = "X";
+// 			prevCard = "";
+// 			prevCell = null;
+// 		}, 700)
+// 	}
+// }
 
 
 
