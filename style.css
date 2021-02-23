@@ -14,18 +14,14 @@ ul {
     margin: 0; 
     padding: 0; 
     text-align: center; 
-    word-spacing: 150px;
-}
-
-li {
-    display: inline;
     font-size: 20px;
 }
 
-.resetButton {
+
+#resetButton {
     cursor: pointer;
 }
-.resetButton:hover {
+#resetButton:hover {
     color: pink;
 }
 
@@ -49,5 +45,7 @@ li {
 }
 
 .cell {
+    background-color: #C4C4C4;
+    cursor:pointer;
 }
 

@@ -33,9 +33,8 @@
 		let prevCard = "";
 		let prevCell = null;
 	 
-
-	//Card Matches
-		// let cardsFlipped = 0;
+	//TIME VARIABLES
+		let timeLeft = 60;
 	
 
 
@@ -47,6 +46,7 @@
 // let numOfCards = 12;
 
 //3. ELEMENT REFERENCES	
+
 	//Cell Boxes
 	let c1 = document.getElementById("cell1");
 	let c2 = document.getElementById("cell2");
@@ -61,10 +61,14 @@
 	let c11 = document.getElementById("cell11");
 	let c12 = document.getElementById("cell12");
 
+	//TIMER ELEMENT REFERENCES
+	let timer = document.getElementById("countDown");
 
+	//RESET ELEMENT REFERENCES
+	let reset = document.getElementById("resetButton");
 
-	//Filliping Element References
-
+	//SCORE ELEMENT REFERENCES
+	let score = document.getElementById("scoreKeeper");
 
 
 
@@ -78,21 +82,61 @@
 	//Cell Boxes
 	c1.addEventListener("click", selectOneWasClicked);
 	c2.addEventListener("click", selectTwoWasClicked);
-	// c3.addEventListener("click", selectThreeWasClicked);
-	// c4.addEventListener("click", selectFourWasClicked);
-	// c5.addEventListener("click", selectFiveWasClicked);
-	// c6.addEventListener("click", selectSixWasClicked);
-	// c7.addEventListener("click", selectSevenWasClicked);
-	// c8.addEventListener("click", selectEightWasClicked);
-	// c9.addEventListener("click", selectNineWasClicked);
-	// c10.addEventListener("click", selectTenWasClicked);
-	// c11.addEventListener("click", selectElevenWasClicked);
-	// c12.addEventListener("click", selectTwelveWasClicked);
+	c3.addEventListener("click", selectThreeWasClicked);
+	c4.addEventListener("click", selectFourWasClicked);
+	c5.addEventListener("click", selectFiveWasClicked);
+	c6.addEventListener("click", selectSixWasClicked);
+	c7.addEventListener("click", selectSevenWasClicked);
+	c8.addEventListener("click", selectEightWasClicked);
+	c9.addEventListener("click", selectNineWasClicked);
+	c10.addEventListener("click", selectTenWasClicked);
+	c11.addEventListener("click", selectElevenWasClicked);
+	c12.addEventListener("click", selectTwelveWasClicked);
 
+	//TIMER EVENT LISTENER
+	timer.addEventListener("click", timerStarts)
+
+	//RESET EVENT LISTENER
+	reset.addEventListener("click", resetButtonWasClicked)
+	
+	//SCORE EVENT LISTENER
 
 
 //5. FUNCTIONS
+//TIMER FUNCTION 
+function timerStarts(){
+	setInterval(function(){
+		if(timeLeft <= 0){
+			clearInterval(timerStarts);
+			countDown.innerHTML = "Finished";
+		}
+		else {
+			countDown.innerHTML = timeLeft + " Seconds Remaining"
+		}
+		timeLeft -= 1;
+	}, 1000)
 
+}
+
+//RESET BUTTON FUNCTION
+function resetButtonWasClicked(){
+	c1.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c2.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c3.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c4.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c5.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c6.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c7.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c8.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c9.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c10.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c11.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	c12.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+}
+
+
+
+//FLIP FUNCTION 
 	//CELL 1 FUNCTION
 function selectOneWasClicked() {
 		c1.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>"; //selecting the innerHTML for Cell 1 and changing it to "A"
@@ -105,15 +149,18 @@ function selectOneWasClicked() {
 			prevCard = "<img src='HTML Logo.png' width='235px' height='220px'>";
 			prevCell = c1;
 		}
+		// if(resetButtonWasClicked){
+		// 	c1.innerHTML = "X";
+		// }
 		else {
 			setTimeout(function() {
-				c1.innerHTML = "X"; //or else, if c1's innerHTML does not match, it will flip back to an X
-				prevCell.innerHTML = "X"; //it will also set previous cell to "x" which is the back of the card, if it is not a match
+				c1.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>"; //or else, if c1's innerHTML does not match, it will flip back to an X
+				prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 				prevCard = ""; // this resets our state values to empty so we can start again
 				prevCell = null;
 			}, 700) //This timer is for the card function to flip back it doesn't match
 		}
-	}
+}
 
 	//CELL 2 FUNCTION
 
@@ -130,8 +177,8 @@ function selectTwoWasClicked() {
 	}
     else {
         setTimeout(function() {
-			c2.innerHTML = "X";
-			prevCell.innerHTML = "X";
+			c2.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
 		}, 700)
@@ -140,240 +187,240 @@ function selectTwoWasClicked() {
 
 
 
-// 	//CELL 3 FUNCTION
+	//CELL 3 FUNCTION
 
-// function selectThreeWasClicked() {
-// 	c3.innerHTML = "B";
-// 	if (prevCard === "B") {
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if (prevCard === "") {
-// 		prevCard = "B";
-// 		prevCell = c3;
-// 	}
-// 	else {
-// 		setTimeout(function() {
-// 			c3.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectThreeWasClicked() {
+	c3.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
+	if (prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if (prevCard === "") {
+		prevCard = "<img src='JS Logo.png' width='235px' height='220px'>";
+		prevCell = c3;
+	}
+	else {
+		setTimeout(function() {
+			c3.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
 // 	//CELL 4 FUNCTION
 
 
-// function selectFourWasClicked() {
-// 	c4.innerHTML = "B";
-// 	if(prevCell === "B") {
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if (prevCard === ""){
-// 		prevCard = "B";
-// 		prevCell = c4; 
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c4.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCell = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectFourWasClicked() {
+	c4.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if (prevCard === ""){
+		prevCard = "<img src='JS Logo.png' width='235px' height='220px'>";
+		prevCell = c4; 
+	}
+	else {
+		setTimeout(function(){
+			c4.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
-// 	//CELL 5 FUNCTION
+	//CELL 5 FUNCTION
 
-// function selectFiveWasClicked(){
-// 	c5.innerHTML = "C"
-// 	if(prevCard === "C") {
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if (prevCard === ""){
-// 		prevCard = "C";
-// 		prevCell = c5;
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c5.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectFiveWasClicked(){
+	c5.innerHTML = "<img src='CSS Logo.png' width='235px' height='220px'>"
+	if(prevCard === "<img src='CSS Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if (prevCard === ""){
+		prevCard = "<img src='CSS Logo.png' width='235px' height='220px'>";
+		prevCell = c5;
+	}
+	else {
+		setTimeout(function(){
+			c5.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
-// 	//CELL 6 FUNCTION
+	//CELL 6 FUNCTION
 
-// function selectSixWasClicked() {
-// 	c6.innerHTML = "C";
-// 	if(prevCard === "C"){
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if (prevCard === ""){
-// 		prevCard = "C";
-// 		prevCell = c6;
-// 	}
-// 	else {
-// 		setTimeout(function() {
-// 			c6.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectSixWasClicked() {
+	c6.innerHTML = "<img src='CSS Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='CSS Logo.png' width='235px' height='220px'>"){
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if (prevCard === ""){
+		prevCard = "<img src='CSS Logo.png' width='235px' height='220px'>";
+		prevCell = c6;
+	}
+	else {
+		setTimeout(function() {
+			c6.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
 // 	//CELL 7 FUNCTION
 
-// function selectSevenWasClicked() {
-// 	c7.innerHTML = "D";
-// 	if(prevCard === "D") {
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if(prevCard === "") {
-// 		prevCard = "D";
-// 		prevCell = c7;
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c7.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectSevenWasClicked() {
+	c7.innerHTML = "<img src='node-js Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='node-js Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if(prevCard === "") {
+		prevCard = "<img src='node-js Logo.png' width='235px' height='220px'>";
+		prevCell = c7;
+	}
+	else {
+		setTimeout(function(){
+			c7.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
-// 	//CELL 8 FUNCTION
+	//CELL 8 FUNCTION
 
-// function selectEightWasClicked() {
-// 	c8.innerHTML = "D";
-// 	if(prevCard === "D") {
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if(prevCard === ""){
-// 		prevCard = "D";
-// 		prevCell = c8;
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c8.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectEightWasClicked() {
+	c8.innerHTML = "<img src='node-js Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='node-js Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if(prevCard === ""){
+		prevCard = "<img src='node-js Logo.png' width='235px' height='220px'>";
+		prevCell = c8;
+	}
+	else {
+		setTimeout(function(){
+			c8.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
 
 // 	//CELL 9 FUNCTION
 
-// function selectNineWasClicked() {
-// 	c9.innerHTML = "E";
-// 	if(prevCard === "E"){
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if (prevCard === "") {
-// 		prevCard = "E";
-// 		prevCell = c9;
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c9.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectNineWasClicked() {
+	c9.innerHTML = "<img src='python Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='python Logo.png' width='235px' height='220px'>"){
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if (prevCard === "") {
+		prevCard = "<img src='python Logo.png' width='235px' height='220px'>";
+		prevCell = c9;
+	}
+	else {
+		setTimeout(function(){
+			c9.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
 
-// 	//CELL 10 FUNCTION
+	//CELL 10 FUNCTION
 
-// function selectTenWasClicked() {
-// 	c10.innerHTML = "E";
-// 	if(prevCard === "E"){
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;
-// 	}
-// 	if(prevCard === ""){
-// 		prevCard = "E";
-// 		prevCell = c10;
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c10.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCard = null;
-// 		}, 700)
-// 	}
-// } 
-
-
-// 	//CELL 11 FUNCTION
-
-// function selectElevenWasClicked() {
-// 	c11.innerHTML = "F";
-// 	if(prevCard === "F"){
-// 		prevCard = "";
-// 		prevCell = null;
-// 		return;	
-// 	}
-// 	if(prevCard = ""){
-// 		prevCard = "F";
-// 		prevCell = c11;
-// 	}
-// 	else {
-// 		setTimeout(function(){
-// 			c11.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCard = null;
-// 		}, 700)
-// 	}
-// }
+function selectTenWasClicked() {
+	c10.innerHTML = "<img src='python Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='python Logo.png' width='235px' height='220px'>"){
+		prevCard = "";
+		prevCell = null;
+		return;
+	}
+	if(prevCard === ""){
+		prevCard = "<img src='python Logo.png' width='235px' height='220px'>";
+		prevCell = c10;
+	}
+	else {
+		setTimeout(function(){
+			c10.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCard = null;
+		}, 700)
+	}
+} 
 
 
-// 	//CELL 12 FUNCTION
+	//CELL 11 FUNCTION
 
-// function selectTwelveWasClicked() {
-// 	c12.innerHTML = "F";
-// 	if(prevCard === "F"){
-// 		prevCard = "";
-// 		prevCell = nulll
-// 		return;
-// 	}
-// 	if(prevCard === "") {
-// 		prevCard = "F";
-// 		prevCell = c12; 
-// 	}
-// 	else{
-// 		setTimeout(function(){
-// 			c12.innerHTML = "X";
-// 			prevCell.innerHTML = "X";
-// 			prevCard = "";
-// 			prevCell = null;
-// 		}, 700)
-// 	}
-// }
+function selectElevenWasClicked() {
+	c11.innerHTML = "<img src='react Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='react Logo.png' width='235px' height='220px'>"){
+		prevCard = "";
+		prevCell = null;
+		return;	
+	}
+	if(prevCard === ""){
+		prevCard = "<img src='react Logo.png' width='235px' height='220px'>";
+		prevCell = c11;
+	}
+	else {
+		setTimeout(function(){
+			c11.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCard = null;
+		}, 700)
+	}
+}
+
+
+	//CELL 12 FUNCTION
+
+function selectTwelveWasClicked() {
+	c12.innerHTML = "<img src='react Logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='react Logo.png' width='235px' height='220px'>"){
+		prevCard = "";
+		prevCell = nulll
+		return;
+	}
+	if(prevCard === "") {
+		prevCard = "<img src='react Logo.png' width='235px' height='220px'>";
+		prevCell = c12; 
+	}
+	else{
+		setTimeout(function(){
+			c12.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 700)
+	}
+}
 
 
 
