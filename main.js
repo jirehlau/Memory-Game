@@ -38,13 +38,9 @@
 		let timerRunning = false;
 
 	//SCORE VARIABLE
-		let score = 0;
+	let playScore = 0
 
 
-// let time = 60;
-// let clicks = 0;
-// Let score = 0;
-// let numOfCards = 12;
 
 //3. ELEMENT REFERENCES	
 
@@ -102,33 +98,25 @@
 
 	//RESET EVENT LISTENER
 	reset.addEventListener("click", resetButtonWasClicked)
-	
-
-	//SCORE EVENT LISTENER
-	scoreBoard.addEventListener("click", pointWasAdded)
-
-
 
 
 
 
 //5. FUNCTIONS
-//SCORE FUNCTION
-function pointWasAdded(){
-	if (c1 === c2) {
-		score += 1;
-	}
-}
-
 
 
 //TIMER FUNCTION 
+let timerId;
+
+
+
+
 function timerStarts(){
-		let timerId = setInterval(function(){
+		timerId = setInterval(function(){
 			console.log(setInterval, timeLeft)
 			if(timeLeft <= 0){
 				clearInterval(timerId);
-				countDown.innerHTML = "FINISHED";
+				countDown.innerHTML = alert('YOU LOST, LOSER!!!');
 			}
 			else {
 				countDown.innerHTML =  timeLeft + " Seconds Remaining"
@@ -136,6 +124,7 @@ function timerStarts(){
 			timeLeft -= 1;
 		}, 1000)
 }
+
 
 //RESET BUTTON FUNCTION
 function resetButtonWasClicked(){
@@ -151,7 +140,20 @@ function resetButtonWasClicked(){
 	c10.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 	c11.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 	c12.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+	prevCard = "";
+	prevCell = null;
+	clearInterval(timerId);
+	timeLeft = 60;
+	timerRunning = false;
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -160,6 +162,8 @@ function resetButtonWasClicked(){
 function selectOneWasClicked() {
 	c1.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>";
 	if(prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -187,6 +191,8 @@ function selectOneWasClicked() {
 function selectTwoWasClicked() {
     c2.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>";
 	if(prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -216,6 +222,8 @@ function selectTwoWasClicked() {
 function selectThreeWasClicked() {
 	c3.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -244,6 +252,8 @@ function selectThreeWasClicked() {
 function selectFourWasClicked() {
 	c4.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -271,6 +281,8 @@ function selectFourWasClicked() {
 function selectFiveWasClicked(){
 	c5.innerHTML = "<img src='CSS Logo.png' width='235px' height='220px'>"
 	if(prevCard === "<img src='CSS Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -298,6 +310,8 @@ function selectFiveWasClicked(){
 function selectSixWasClicked() {
 	c6.innerHTML = "<img src='CSS Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='CSS Logo.png' width='235px' height='220px'>"){
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -325,6 +339,8 @@ function selectSixWasClicked() {
 function selectSevenWasClicked() {
 	c7.innerHTML = "<img src='node-js Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='node-js Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -352,6 +368,8 @@ function selectSevenWasClicked() {
 function selectEightWasClicked() {
 	c8.innerHTML = "<img src='node-js Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='node-js Logo.png' width='235px' height='220px'>") {
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -380,6 +398,8 @@ function selectEightWasClicked() {
 function selectNineWasClicked() {
 	c9.innerHTML = "<img src='python Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='python Logo.png' width='235px' height='220px'>"){
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -408,6 +428,8 @@ function selectNineWasClicked() {
 function selectTenWasClicked() {
 	c10.innerHTML = "<img src='python Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='python Logo.png' width='235px' height='220px'>"){
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;
@@ -436,6 +458,8 @@ function selectTenWasClicked() {
 function selectElevenWasClicked() {
 	c11.innerHTML = "<img src='react Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='react Logo.png' width='235px' height='220px'>"){
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
 		return;	
@@ -464,8 +488,10 @@ function selectElevenWasClicked() {
 function selectTwelveWasClicked() {
 	c12.innerHTML = "<img src='react Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='react Logo.png' width='235px' height='220px'>"){
+		playScore += 1;
+		scoreBoard.innerHTML = playScore;
 		prevCard = "";
-		prevCell = nulll
+		prevCell = null;
 		return;
 	}
 	if(prevCard === "") {
