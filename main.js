@@ -13,6 +13,9 @@
 	const card11 = "f";
 	const card12 = "f";
 
+// var myAudio = document.getElementById("audioId").autoplay = true;
+
+
 //2. VARIABLES
 	//Cell Boxes
 		// let userSelection = "";
@@ -36,13 +39,17 @@
 	//TIME VARIABLES
 		let timeLeft = 59;
 		let timerRunning = false;
+		let timerId;
 
 	//SCORE VARIABLE
 	let playScore = 0
 
+	//AUDIO VAIRABLE
+
 
 
 //3. ELEMENT REFERENCES	
+
 
 	//Cell Boxes
 	let c1 = document.getElementById("cell1");
@@ -57,6 +64,10 @@
 	let c10 = document.getElementById("cell10");
 	let c11 = document.getElementById("cell11");
 	let c12 = document.getElementById("cell12");
+	let c13 = document.getElementById("cell13");
+	let c14 = document.getElementById("cell14");
+	let c15 = document.getElementById("cell15");
+	let c16 = document.getElementById("cell16");
 
 	//TIMER ELEMENT REFERENCES
 	let timer = document.getElementById("countDown");
@@ -69,6 +80,12 @@
 	//SCORE ELEMENT REFERENCES
 	let scoreBoard = document.getElementById("scoreKeeper");
 
+	//STATUS ELEMENT REFERENCES
+	let status = document.getElementById("status");
+
+
+	//MUSIC ELEMENT
+	let musicId = document.getElementById("musicId")
 
 
 // let timeLeft = document.getElementById("countDown");
@@ -91,6 +108,10 @@
 	c10.addEventListener("click", selectTenWasClicked);
 	c11.addEventListener("click", selectElevenWasClicked);
 	c12.addEventListener("click", selectTwelveWasClicked);
+	c13.addEventListener("click", selectThirteenWasClicked);
+	c14.addEventListener("click", selectFourteenWasClicked);
+	c15.addEventListener("click", selectFifteenWasClicked);
+	c16.addEventListener("click", selectSixteenWasClicked);
 
 	//TIMER EVENT LISTENER
 	timer.addEventListener("click", timerStarts)
@@ -100,63 +121,13 @@
 	reset.addEventListener("click", resetButtonWasClicked)
 
 
+	
+
 
 
 //5. FUNCTIONS
 
-
-//TIMER FUNCTION 
-let timerId;
-
-
-
-
-function timerStarts(){
-		timerId = setInterval(function(){
-			console.log(setInterval, timeLeft)
-			if(timeLeft <= 0){
-				clearInterval(timerId);
-				countDown.innerHTML = alert('YOU LOST, LOSER!!!');
-			}
-			else {
-				countDown.innerHTML =  timeLeft + " Seconds Remaining"
-			}
-			timeLeft -= 1;
-		}, 1000)
-}
-
-
-//RESET BUTTON FUNCTION
-function resetButtonWasClicked(){
-	c1.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c2.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c3.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c4.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c5.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c6.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c7.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c8.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c9.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c10.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c11.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	c12.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-	prevCard = "";
-	prevCell = null;
-	clearInterval(timerId);
-	timeLeft = 59;
-	timer.innerHTML = "60 Seconds Remaining";
-	timerRunning = false;
-	scoreBoard.innerHTML = 0;
-}
-
-
-
-
-
-
-
-
-
+//AUDIO FUNCTION
 
 
 //FLIP FUNCTION 
@@ -164,10 +135,11 @@ function resetButtonWasClicked(){
 function selectOneWasClicked() {
 	c1.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>";
 	if(prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 		}
 	if (prevCard === ""){
@@ -177,10 +149,10 @@ function selectOneWasClicked() {
     else {
         setTimeout(function() {
 			c1.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
     }
 	if(!timerRunning){
 		timerStarts();
@@ -193,10 +165,11 @@ function selectOneWasClicked() {
 function selectTwoWasClicked() {
     c2.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>";
 	if(prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 		}
 	if (prevCard === ""){
@@ -209,7 +182,7 @@ function selectTwoWasClicked() {
 			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
     }
 	if(!timerRunning){
 		timerStarts();
@@ -224,10 +197,11 @@ function selectTwoWasClicked() {
 function selectThreeWasClicked() {
 	c3.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if (prevCard === ""){
@@ -236,11 +210,11 @@ function selectThreeWasClicked() {
 	}
 	else {
 		setTimeout(function(){
-			c3.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c3.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -254,10 +228,11 @@ function selectThreeWasClicked() {
 function selectFourWasClicked() {
 	c4.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if (prevCard === ""){
@@ -266,11 +241,11 @@ function selectFourWasClicked() {
 	}
 	else {
 		setTimeout(function(){
-			c4.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c4.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -283,10 +258,11 @@ function selectFourWasClicked() {
 function selectFiveWasClicked(){
 	c5.innerHTML = "<img src='CSS Logo.png' width='235px' height='220px'>"
 	if(prevCard === "<img src='CSS Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if (prevCard === ""){
@@ -299,7 +275,7 @@ function selectFiveWasClicked(){
 			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -312,10 +288,11 @@ function selectFiveWasClicked(){
 function selectSixWasClicked() {
 	c6.innerHTML = "<img src='CSS Logo.png' width='235px' height='220px'>";
 	if(prevCard === "<img src='CSS Logo.png' width='235px' height='220px'>"){
-		playScore += 1;
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if (prevCard === ""){
@@ -324,11 +301,11 @@ function selectSixWasClicked() {
 	}
 	else {
 		setTimeout(function() {
-			c6.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c6.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -339,25 +316,26 @@ function selectSixWasClicked() {
 // 	//CELL 7 FUNCTION
 
 function selectSevenWasClicked() {
-	c7.innerHTML = "<img src='node-js Logo.png' width='235px' height='220px'>";
-	if(prevCard === "<img src='node-js Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+	c7.innerHTML = "<img src='node-js logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='node-js logo.png' width='235px' height='220px'>") {
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if(prevCard === ""){
-		prevCard = "<img src='node-js Logo.png' width='235px' height='220px'>";
+		prevCard = "<img src='node-js logo.png' width='235px' height='220px'>";
 		prevCell = c7;
 	}
 	else {
 		setTimeout(function(){
-			c7.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c7.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -368,25 +346,26 @@ function selectSevenWasClicked() {
 	//CELL 8 FUNCTION
 
 function selectEightWasClicked() {
-	c8.innerHTML = "<img src='node-js Logo.png' width='235px' height='220px'>";
-	if(prevCard === "<img src='node-js Logo.png' width='235px' height='220px'>") {
-		playScore += 1;
+	c8.innerHTML = "<img src='node-js logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='node-js logo.png' width='235px' height='220px'>") {
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if(prevCard === ""){
-		prevCard = "<img src='node-js Logo.png' width='235px' height='220px'>";
+		prevCard = "<img src='node-js logo.png' width='235px' height='220px'>";
 		prevCell = c8;
 	}
 	else {
 		setTimeout(function(){
-			c8.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c8.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -398,25 +377,26 @@ function selectEightWasClicked() {
 // 	//CELL 9 FUNCTION
 
 function selectNineWasClicked() {
-	c9.innerHTML = "<img src='python Logo.png' width='235px' height='220px'>";
-	if(prevCard === "<img src='python Logo.png' width='235px' height='220px'>"){
-		playScore += 1;
+	c9.innerHTML = "<img src='python logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='python logo.png' width='235px' height='220px'>"){
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if (prevCard === "") {
-		prevCard = "<img src='python Logo.png' width='235px' height='220px'>";
+		prevCard = "<img src='python logo.png' width='235px' height='220px'>";
 		prevCell = c9;
 	}
 	else {
 		setTimeout(function(){
-			c9.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c9.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -428,25 +408,26 @@ function selectNineWasClicked() {
 	//CELL 10 FUNCTION
 
 function selectTenWasClicked() {
-	c10.innerHTML = "<img src='python Logo.png' width='235px' height='220px'>";
-	if(prevCard === "<img src='python Logo.png' width='235px' height='220px'>"){
-		playScore += 1;
+	c10.innerHTML = "<img src='python logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='python logo.png' width='235px' height='220px'>"){
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if(prevCard === ""){
-		prevCard = "<img src='python Logo.png' width='235px' height='220px'>";
+		prevCard = "<img src='python logo.png' width='235px' height='220px'>";
 		prevCell = c10;
 	}
 	else {
 		setTimeout(function(){
-			c10.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c10.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
-			prevCard = null;
-		}, 700)
+			prevCell = null;
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -458,25 +439,26 @@ function selectTenWasClicked() {
 	//CELL 11 FUNCTION
 
 function selectElevenWasClicked() {
-	c11.innerHTML = "<img src='react Logo.png' width='235px' height='220px'>";
-	if(prevCard === "<img src='react Logo.png' width='235px' height='220px'>"){
-		playScore += 1;
+	c11.innerHTML = "<img src='react logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='react logo.png' width='235px' height='220px'>"){
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;	
 	}
 	if(prevCard === ""){
-		prevCard = "<img src='react Logo.png' width='235px' height='220px'>";
+		prevCard = "<img src='react logo.png' width='235px' height='220px'>";
 		prevCell = c11;
 	}
 	else {
 		setTimeout(function(){
-			c11.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c11.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
-			prevCard = null;
-		}, 700)
+			prevCell = null;
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -488,25 +470,86 @@ function selectElevenWasClicked() {
 	//CELL 12 FUNCTION
 
 function selectTwelveWasClicked() {
-	c12.innerHTML = "<img src='react Logo.png' width='235px' height='220px'>";
-	if(prevCard === "<img src='react Logo.png' width='235px' height='220px'>"){
-		playScore += 1;
+	c12.innerHTML = "<img src='react logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='react logo.png' width='235px' height='220px'>"){
+		playScore += 2;
 		scoreBoard.innerHTML = playScore;
 		prevCard = "";
 		prevCell = null;
+		statusUpdate();
 		return;
 	}
 	if(prevCard === "") {
-		prevCard = "<img src='react Logo.png' width='235px' height='220px'>";
+		prevCard = "<img src='react logo.png' width='235px' height='220px'>";
 		prevCell = c12; 
 	}
 	else{
 		setTimeout(function(){
-			c12.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			c12.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
-		}, 700)
+		}, 500)
+	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
+}
+
+	//CELL 13 FUNCTION
+function selectThirteenWasClicked() {
+	c13.innerHTML = "<img src='angular logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='angular logo.png' width='235px' height='220px'>"){
+		playScore += 2;
+		scoreBoard.innerHTML = playScore;
+		prevCard = "";
+		prevCell = null;
+		statusUpdate();
+		return;
+	}
+	if(prevCard === "") {
+		prevCard = "<img src='angular logo.png' width='235px' height='220px'>";
+		prevCell = c13; 
+	}
+	else{
+		setTimeout(function(){
+			c13.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 500)
+	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
+}
+
+
+
+	//CELL 14 FUNCTION
+function selectFourteenWasClicked() {
+	c14.innerHTML = "<img src='angular logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='angular logo.png' width='235px' height='220px'>"){
+		playScore += 2;
+		scoreBoard.innerHTML = playScore;
+		prevCard = "";
+		prevCell = null;
+		statusUpdate();
+		return;
+	}
+	if(prevCard === "") {
+		prevCard = "<img src='angular logo.png' width='235px' height='220px'>";
+		prevCell = c14; 
+	}
+	else{
+		setTimeout(function(){
+			c14.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 500)
 	}
 	if(!timerRunning){
 		timerStarts();
@@ -517,6 +560,126 @@ function selectTwelveWasClicked() {
 
 
 
+	//CELL 15 FUNCTION
+function selectFifteenWasClicked() {
+	c15.innerHTML = "<img src='mongodb logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='mongodb logo.png' width='235px' height='220px'>"){
+		playScore += 2;
+		scoreBoard.innerHTML = playScore;
+		prevCard = "";
+		prevCell = null;
+		statusUpdate();
+		return;
+	}
+	if(prevCard === "") {
+		prevCard = "<img src='mongodb logo.png' width='235px' height='220px'>";
+		prevCell = c15; 
+	}
+	else{
+		setTimeout(function(){
+			c15.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 500)
+	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
+}
+
+
+
+	//CELL 16 FUNCTION
+function selectSixteenWasClicked() {
+	c16.innerHTML = "<img src='mongodb logo.png' width='235px' height='220px'>";
+	if(prevCard === "<img src='mongodb logo.png' width='235px' height='220px'>"){
+		playScore += 2;
+		scoreBoard.innerHTML = playScore;
+		prevCard = "";
+		prevCell = null;
+		statusUpdate();
+		return;
+	}
+	if(prevCard === "") {
+		prevCard = "<img src='mongodb logo.png' width='235px' height='220px'>";
+		prevCell = c16; 
+	}
+	else{
+		setTimeout(function(){
+			c16.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCard = "";
+			prevCell = null;
+		}, 500)
+	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
+}
+
+
+
+
+
+
+
+//RESET BUTTON FUNCTION
+function resetButtonWasClicked(){
+	c1.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c2.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c3.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c4.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c5.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c6.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c7.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c8.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c9.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c10.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c11.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c12.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c13.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c14.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c15.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	c16.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+	prevCard = "";
+	prevCell = null;
+	clearInterval(timerId);
+	timeLeft = 59;
+	timer.innerHTML = "60 Seconds Remaining";
+	timerRunning = false;
+	scoreBoard.innerHTML = 0;
+	playScore = 0;
+	status.innerHTML = "..."
+}
+
+//TIMER FUNCTION 
+function statusUpdate(){
+	if (playScore == 16){
+		status.innerHTML = alert("You have won");
+		clearInterval(timerId);
+		timerRunning = false;
+	}
+	else {
+	}
+}
+
+
+function timerStarts(){
+	timerId = setInterval(function(){
+		console.log(setInterval, timeLeft)
+		if(timeLeft <= 0){
+			clearInterval(timerId);
+			countDown.innerHTML = alert('YOU LOST!!!');
+		}
+		else {
+			countDown.innerHTML =  timeLeft + " Seconds Remaining"
+		}
+		timeLeft -= 1;
+	}, 1000)
+}
 
 
 
