@@ -143,8 +143,10 @@ function resetButtonWasClicked(){
 	prevCard = "";
 	prevCell = null;
 	clearInterval(timerId);
-	timeLeft = 60;
+	timeLeft = 59;
+	timer.innerHTML = "60 Seconds Remaining";
 	timerRunning = false;
+	scoreBoard.innerHTML = 0;
 }
 
 
