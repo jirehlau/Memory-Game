@@ -34,10 +34,11 @@
 		let prevCell = null;
 	 
 	//TIME VARIABLES
-		let timeLeft = 60;
-	
+		let timeLeft = 59;
+		let timerRunning = false;
 
-
+	//SCORE VARIABLE
+		let score = 0;
 
 
 // let time = 60;
@@ -64,11 +65,13 @@
 	//TIMER ELEMENT REFERENCES
 	let timer = document.getElementById("countDown");
 
+
 	//RESET ELEMENT REFERENCES
 	let reset = document.getElementById("resetButton");
 
+
 	//SCORE ELEMENT REFERENCES
-	let score = document.getElementById("scoreKeeper");
+	let scoreBoard = document.getElementById("scoreKeeper");
 
 
 
@@ -96,26 +99,42 @@
 	//TIMER EVENT LISTENER
 	timer.addEventListener("click", timerStarts)
 
+
 	//RESET EVENT LISTENER
 	reset.addEventListener("click", resetButtonWasClicked)
 	
+
 	//SCORE EVENT LISTENER
+	scoreBoard.addEventListener("click", pointWasAdded)
+
+
+
+
 
 
 //5. FUNCTIONS
+//SCORE FUNCTION
+function pointWasAdded(){
+	if (c1 === c2) {
+		score += 1;
+	}
+}
+
+
+
 //TIMER FUNCTION 
 function timerStarts(){
-	setInterval(function(){
-		if(timeLeft <= 0){
-			clearInterval(timerStarts);
-			countDown.innerHTML = "Finished";
-		}
-		else {
-			countDown.innerHTML = timeLeft + " Seconds Remaining"
-		}
-		timeLeft -= 1;
-	}, 1000)
-
+		let timerId = setInterval(function(){
+			console.log(setInterval, timeLeft)
+			if(timeLeft <= 0){
+				clearInterval(timerId);
+				countDown.innerHTML = "FINISHED";
+			}
+			else {
+				countDown.innerHTML =  timeLeft + " Seconds Remaining"
+			}
+			timeLeft -= 1;
+		}, 1000)
 }
 
 //RESET BUTTON FUNCTION
@@ -139,26 +158,27 @@ function resetButtonWasClicked(){
 //FLIP FUNCTION 
 	//CELL 1 FUNCTION
 function selectOneWasClicked() {
-		c1.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>"; //selecting the innerHTML for Cell 1 and changing it to "A"
-		if (prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") { //This line is telling us if previous card equals to "1" OR if previous card is blank, nothing happens
-			prevCard = ""; // this resets our state values to empty so we can start again
+	c1.innerHTML = "<img src='HTML Logo.png' width='235px' height='220px'>";
+	if(prevCard ==="<img src='HTML Logo.png' width='235px' height='220px'>") {
+		prevCard = "";
+		prevCell = null;
+		return;
+		}
+	if (prevCard === ""){
+		prevCard = "<img src='HTML Logo.png' width='235px' height='220px'>";
+		prevCell = c1;	
+	}
+    else {
+        setTimeout(function() {
+			c1.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
+			prevCard = "";
 			prevCell = null;
-			return;
-		}
-		if (prevCard === "") { // this is the first card
-			prevCard = "<img src='HTML Logo.png' width='235px' height='220px'>";
-			prevCell = c1;
-		}
-		// if(resetButtonWasClicked){
-		// 	c1.innerHTML = "X";
-		// }
-		else {
-			setTimeout(function() {
-				c1.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>"; //or else, if c1's innerHTML does not match, it will flip back to an X
-				prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
-				prevCard = ""; // this resets our state values to empty so we can start again
-				prevCell = null;
-			}, 700) //This timer is for the card function to flip back it doesn't match
+		}, 700)
+    }
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
 		}
 }
 
@@ -183,6 +203,10 @@ function selectTwoWasClicked() {
 			prevCell = null;
 		}, 700)
     }
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 
@@ -191,23 +215,27 @@ function selectTwoWasClicked() {
 
 function selectThreeWasClicked() {
 	c3.innerHTML = "<img src='JS Logo.png' width='235px' height='220px'>";
-	if (prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
+	if(prevCard === "<img src='JS Logo.png' width='235px' height='220px'>") {
 		prevCard = "";
 		prevCell = null;
 		return;
 	}
-	if (prevCard === "") {
+	if (prevCard === ""){
 		prevCard = "<img src='JS Logo.png' width='235px' height='220px'>";
-		prevCell = c3;
+		prevCell = c3; 
 	}
 	else {
-		setTimeout(function() {
-			c3.innerHTML = "<img src='back logo.png' width='235px' height='220px'>";
+		setTimeout(function(){
+			c3.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 			prevCell.innerHTML = "<img src='back Logo.png' width='235px' height='220px'>";
 			prevCard = "";
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 // 	//CELL 4 FUNCTION
@@ -232,6 +260,10 @@ function selectFourWasClicked() {
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 	//CELL 5 FUNCTION
@@ -255,6 +287,10 @@ function selectFiveWasClicked(){
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 	//CELL 6 FUNCTION
@@ -278,6 +314,10 @@ function selectSixWasClicked() {
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 // 	//CELL 7 FUNCTION
@@ -289,7 +329,7 @@ function selectSevenWasClicked() {
 		prevCell = null;
 		return;
 	}
-	if(prevCard === "") {
+	if(prevCard === ""){
 		prevCard = "<img src='node-js Logo.png' width='235px' height='220px'>";
 		prevCell = c7;
 	}
@@ -301,6 +341,10 @@ function selectSevenWasClicked() {
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 	//CELL 8 FUNCTION
@@ -324,6 +368,10 @@ function selectEightWasClicked() {
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 
@@ -348,6 +396,10 @@ function selectNineWasClicked() {
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 
@@ -372,6 +424,10 @@ function selectTenWasClicked() {
 			prevCard = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 } 
 
 
@@ -396,6 +452,10 @@ function selectElevenWasClicked() {
 			prevCard = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 
@@ -420,6 +480,10 @@ function selectTwelveWasClicked() {
 			prevCell = null;
 		}, 700)
 	}
+	if(!timerRunning){
+		timerStarts();
+		timerRunning = true;
+		}
 }
 
 
