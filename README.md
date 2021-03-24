@@ -15,10 +15,12 @@ This is a memory game I created for my first project at General Assembly. When t
 
 ![Starting Page](assets/matched.png)
 
-
 <h2>When everything is matched</h2>
 
 ![Starting Page](assets/flippedAll.png)
+
+
+<h2>Try out the game!</h2>
 
 [Link to the game](https://jirehlau.github.io/Memory-Game/)
 
