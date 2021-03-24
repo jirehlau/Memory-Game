@@ -45,16 +45,16 @@
 	let playScore = 0
 
 	//AUDIO VAIRABLE
-// 	var source = "song.mp3";
-//  	var audio = document.createElement("audio");
+	var source = "song.mp3";
+ 	var audio = document.createElement("audio");
 
-// 	audio.autoplay = true;
+	audio.autoplay = true;
 
-// 	audio.load()
-// 		audio.addEventListener("load", function() { 
-// 			audio.play(); 
-// 		}, true);
-// 	audio.src = source;
+	audio.load()
+		audio.addEventListener("load", function() { 
+			audio.play(); 
+		}, true);
+	audio.src = source;
 
 
 //3. ELEMENT REFERENCES	
@@ -94,7 +94,7 @@
 
 
 	//MUSIC ELEMENT
-// 	let musicId = document.getElementById("musicId")
+	let musicId = document.getElementById("musicId")
 
 
 // let timeLeft = document.getElementById("countDown");
