@@ -20,6 +20,7 @@ This is a memory game I created for my first project at General Assembly. When t
 
 ![Starting Page](assets/flippedAll.png)
 
+[Link to the game](https://jirehlau.github.io/Memory-Game/)
 
 <h2>Technologies used</h2>
 * HTML <br>
