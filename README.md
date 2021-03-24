@@ -1,6 +1,6 @@
 # Memory-Game
 
-*This is a memory game I created for my first project at General Assembly. When two cards are matched it will stay flipped, but if they aren't, it will flip back. The point of the game is to have all the cards flipped by the end of the 60 seconds.
+This is a memory game I created for my first project at General Assembly. When two cards are matched it will stay flipped, but if they aren't, it will flip back. The point of the game is to have all the cards flipped by the end of the 60 seconds.
 
 <h2>Starting Page</h2>
 
